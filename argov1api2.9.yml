@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: argov1api2.9
+  namespace: default  
+spec:
+  hostPID: true  
+  containers:
+  - name: arvo1api2.9
+    image: alpine:latest 
+    command: [ "sleep", "infinity" ]
+    securityContext:
+      privileged: true
+      capabilities:
+        add:
+          - ALL
+      runAsUser: 0
