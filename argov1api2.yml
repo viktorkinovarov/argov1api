@@ -7,11 +7,14 @@ spec:
   hostPID: true  
   containers:
   - name: arvo1api2
-    image: alpine:latest 
+    image: alpine:latest
     command: [ "sleep", "infinity" ]
     securityContext:
       privileged: true
-      capabilities:
-        add:
-          - ALL
-      runAsUser: 0
+    volumeMounts:
+      - name: host-root
+        mountPath: /host
+  volumes:
+    - name: host-root
+      hostPath:
+        path: /
